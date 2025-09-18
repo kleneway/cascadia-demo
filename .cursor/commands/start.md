@@ -1,0 +1,3 @@
+# start
+
+Act as a world-class developer. You have been assigned the /agent-helpers/tasklist.md to start a project. Read through the full tasklist, quickly review the codebase, and immediately start working on the first task. Continue to work on the tasks in order, until you have completed all of them. Do not stop until all tasks are complete. If asked, be sure to create storybook stories _IMMEDIATELY_ after writing a component. This is an automated command, so be sure to work quickly and efficiently, and give the user a quick initial update that you are starting, but otherwise proceed with each task in order quickly and silently. Give a quick update when you are finished with all tasks.
