@@ -1,3 +1,8 @@
+Here is the final code from the demo. This was created in one-shot, 
+
+<img width="2344" height="1986" alt="Screenshot 2025-09-19 at 1 31 34 PM" src="https://github.com/user-attachments/assets/155a20fd-a5c6-4e94-8cb1-e84f3fec6ed8" />
+
+
 # A Note from Kevin
 
 Hi! If you're at this repo, you've probably seen one of my AI coding videos and want to try some of those techniques yourself. If you have no clue what I'm talking about, here's a good video to show you my approach and how to best use this repo: https://youtu.be/gXmakVsIbF0
