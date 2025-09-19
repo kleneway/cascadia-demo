@@ -1,37 +1,47 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../components/Button";
 import { action } from "@storybook/addon-actions";
+import { Button } from "../components/atoms/Button";
+import { Plus, Trash2, ChevronRight } from "lucide-react";
 
 const meta = {
-  title: "Components/Button",
+  title: "Atoms/Button",
   component: Button,
   parameters: {
     layout: "centered",
     docs: {
       description: {
         component:
-          "A flexible button component with multiple variants and sizes, built with Tailwind CSS.",
+          "A small, accessible button with variants, sizes, optional icons, and disabled/full-width states.",
       },
     },
   },
   tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: "radio",
-      options: ["primary", "secondary"],
-      description: "The visual style of the button",
+      control: { type: "radio" },
+      options: ["primary", "secondary", "ghost", "destructive"],
+      description: "Visual style",
     },
     size: {
-      control: "radio",
-      options: ["sm", "md", "lg"],
-      description: "The size of the button",
+      control: { type: "radio" },
+      options: ["sm", "md"],
+      description: "Size",
+    },
+    fullWidth: {
+      control: { type: "boolean" },
+      description: "Make button span full width",
+    },
+    disabled: {
+      control: { type: "boolean" },
+      description: "Disabled state",
     },
     children: {
       control: "text",
-      description: "The content to display inside the button",
+      description: "Button label/content",
     },
     onClick: {
-      description: "Function called when the button is clicked",
+      description: "Click handler",
+      action: "clicked",
     },
   },
 } satisfies Meta<typeof Button>;
@@ -39,61 +49,89 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     children: "Primary Button",
     variant: "primary",
     size: "md",
-    onClick: action("primary-clicked"),
+    onClick: action("click"),
   },
 };
 
-export const Secondary: Story = {
+export const Disabled: Story = {
   args: {
-    children: "Secondary Button",
+    children: "Disabled",
     variant: "secondary",
     size: "md",
-    onClick: action("secondary-clicked"),
+    disabled: true,
   },
 };
 
-export const Small: Story = {
-  args: {
-    children: "Small Button",
-    variant: "primary",
-    size: "sm",
-    onClick: action("small-clicked"),
-  },
-};
-
-export const Large: Story = {
-  args: {
-    children: "Large Button",
-    variant: "primary",
-    size: "lg",
-    onClick: action("large-clicked"),
-  },
-};
-
-export const AllVariants: Story = {
+export const WithIcons: Story = {
   render: () => (
-    <div className="flex gap-4 flex-wrap">
-      <Button variant="primary" size="md" onClick={action("primary-clicked")}>
-        Primary
+    <div className="flex flex-col gap-4">
+      <Button variant="primary" leftIcon={<Plus />} onClick={action("add")}>
+        Add item
       </Button>
       <Button
-        variant="secondary"
-        size="md"
-        onClick={action("secondary-clicked")}
+        variant="destructive"
+        leftIcon={<Trash2 />}
+        onClick={action("delete")}
       >
-        Secondary
+        Delete
       </Button>
-      <Button variant="primary" size="sm" onClick={action("small-clicked")}>
-        Small
+      <Button
+        variant="ghost"
+        rightIcon={<ChevronRight />}
+        onClick={action("next")}
+      >
+        Next
       </Button>
-      <Button variant="primary" size="lg" onClick={action("large-clicked")}>
-        Large
-      </Button>
+    </div>
+  ),
+};
+
+export const IconOnly: Story = {
+  render: () => (
+    <Button
+      aria-label="Add"
+      variant="primary"
+      size="sm"
+      leftIcon={<Plus />}
+      onClick={action("icon-only")}
+    />
+  ),
+};
+
+export const FullWidth: Story = {
+  args: {
+    children: "Full width",
+    fullWidth: true,
+    variant: "secondary",
+    size: "md",
+  },
+};
+
+export const Destructive: Story = {
+  args: {
+    children: "Delete",
+    variant: "destructive",
+    size: "md",
+    onClick: action("delete"),
+  },
+};
+
+export const A11y: Story = {
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <p className="text-sm text-neutral-600 dark:text-neutral-300">
+        Tab to focus; use Enter/Space to activate. Focus outline should be
+        visible.
+      </p>
+      <div className="flex gap-3">
+        <Button onClick={action("enter-space")}>Focusable button</Button>
+        <Button variant="ghost">Ghost button</Button>
+      </div>
     </div>
   ),
 };
