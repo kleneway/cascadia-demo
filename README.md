@@ -1,4 +1,4 @@
-Here is the final code from the demo. This was created in one-shot.
+Here is the final screenshot from the single run during the live demo.
 
 <img width="2344" height="1986" alt="Screenshot 2025-09-19 at 1 31 34 PM" src="https://github.com/user-attachments/assets/155a20fd-a5c6-4e94-8cb1-e84f3fec6ed8" />
 
